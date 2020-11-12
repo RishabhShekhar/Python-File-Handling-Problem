@@ -1,11 +1,16 @@
 from correct_answers import solutions
 
+import random
+import hashlib
+
 
 def check_testcase(dictionary, paragraph, alien):
-    print(dictionary, paragraph, alien)
+    # print(dictionary, paragraph, alien)
+    alien = hashlib.sha224(alien.encode()).hexdigest()
     t = (dictionary, paragraph)
     assert t in solutions
     correct_answer = solutions[(dictionary, paragraph)]
+    # print(correct_answer, alien)
     assert correct_answer == alien
 
 
